@@ -1,0 +1,9 @@
+{
+	"name": "ng-spring-data",
+	"version": "1.0.0",
+	"dependencies": {
+		"angular": "latest",
+		"angular-resource": "latest",
+		"bootstrap-css-only": "latest"
+	}
+}
