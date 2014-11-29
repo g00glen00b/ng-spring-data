@@ -1,34 +1,30 @@
 (function(angular) {
-  angular.module("myApp.controllers").controller("AppController", function($scope, Item) {
+  var AppController = function($scope, Item) {
     Item.query(function(response) {
-      $scope.items = response._embedded ? response._embedded.items : [];
+      $scope.items = response ? response : [];
     });
     
     $scope.addItem = function(description) {
       new Item({
         description: description,
         checked: false
-      }).$save(function(item) {
+      }).save(function(item) {
         $scope.items.push(item);
       });
       $scope.newItem = "";
     };
     
     $scope.updateItem = function(item) {
-      Item.update({
-        id: getId(item)
-      }, item);
+      item.save();
     };
     
-    $scope.getId = function(item) {
-      return item._links.self.href.split('/').pop();
-    };
-    
-    $scope.deleteItem = function(item, idx) {
-      $scope.items.splice(idx, 1);
-      Item.remove({
-        
+    $scope.deleteItem = function(item) {
+      item.remove(function() {
+        $scope.items.splice($scope.items.indexOf(item), 1);
       });
     };
-  });
+  };
+  
+  AppController.$inject = ['$scope', 'Item'];
+  angular.module("myApp.controllers").controller("AppController", AppController);
 }(angular));

@@ -20,7 +20,7 @@
           </div>
           <div class="col-xs-3">
             <button class="pull-right btn btn-danger" type="button" title="Delete"
-              ng-click="deleteItem(item, $index)">
+              ng-click="deleteItem(item)">
               <span class="glyphicon glyphicon-trash"></span>
             </button>
           </div>
@@ -38,6 +38,8 @@
     </div>
     <script type="text/javascript" src="./libs/angular/angular.min.js"></script>
     <script type="text/javascript" src="./libs/angular-resource/angular-resource.min.js"></script>
+    <script type="text/javascript" src="./libs/angular-spring-data-rest/dist/angular-spring-data-rest.min.js"></script>
+    <script type="text/javascript" src="./libs/lodash/dist/lodash.min.js"></script>
     <script type="text/javascript" src="./app/app.js"></script>
     <script type="text/javascript" src="./app/controllers.js"></script>
     <script type="text/javascript" src="./app/services.js"></script>
